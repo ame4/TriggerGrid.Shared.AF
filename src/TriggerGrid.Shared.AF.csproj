@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <AssemblyTitle>TriggerGrid.Shared.AF</AssemblyTitle>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Title>TriggerGrid.Shared.AF</Title>
+    <Company>TriggerGrid</Company>
+    <Authors>TriggerGrid</Authors>
+    <Description>Shared types for .NET Azure Functions based on TriggerGrid</Description>
+    <Copyright>TriggerGrid</Copyright>
+    <PackageProjectUrl>https://github.com/ame4/TriggerGrid.Shared.AF</PackageProjectUrl>
+    <PackageIcon>TriggerGrid_128x128.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/ame4/TriggerGrid.Shared.AF</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>Event based processing;Azure Functions</PackageTags>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\TriggerGrid.snk</AssemblyOriginatorKeyFile>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Include="..\..\Images\TriggerGrid_128x128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+
+  <Target Name="CopyNuGetPackageToLocalFeed" AfterTargets="Pack">
+
+    <ItemGroup>
+      <PackedNuGet Include="$(PackageOutputPath)\*.nupkg" />
+    </ItemGroup>
+    <MakeDir Directories="C:\NuGet\LocalFeed" Condition="!Exists('C:\NuGet\LocalFeed')" />
+    <Copy SourceFiles="@(PackedNuGet)" DestinationFolder="C:\NuGet\LocalFeed" SkipUnchangedFiles="true" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="TriggerGrid.Shared" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>
