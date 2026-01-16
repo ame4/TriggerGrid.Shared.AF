@@ -7,8 +7,8 @@
 
     <AssemblyTitle>TriggerGrid.Shared.AF</AssemblyTitle>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <FileVersion>1.0.0.2</FileVersion>
     <Title>TriggerGrid.Shared.AF</Title>
     <Company>TriggerGrid</Company>
     <Authors>TriggerGrid</Authors>
@@ -34,11 +34,12 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
 
   <PropertyGroup>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
 
@@ -69,7 +70,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="TriggerGrid.Shared" Version="1.0.1" />
+    <PackageReference Include="TriggerGrid.Shared" Version="1.0.2" />
   </ItemGroup>
 
 </Project>
